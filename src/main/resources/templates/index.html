@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
+
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header> 
+    <section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+    <section th:replace="layout/AgregarCliente :: agregarCliente"></section>
+    <section th:replace="layout/ListadoClientes :: ListadoClientes"></section>
+    <footer th:replace="layout/plantilla :: footer"></footer> 
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
+    <div th:if="${personas != null and !personas.empty}">
+       
+    </div>
+    <div th:if="${personas == null or personas.empty}">
+        La lista de personas está vacía
+    </div>
+
+
+</body>
+</html>
